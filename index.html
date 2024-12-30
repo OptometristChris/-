@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제품 범위 확인</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>제품 범위 확인 프로그램</h1>
+        <form id="rangeCheckerForm">
+            <label for="company">회사명:</label>
+            <input type="text" id="company" required>
+
+            <label for="product">제품명:</label>
+            <input type="text" id="product" required>
+
+            <label for="value">부호 포함 소수값:</label>
+            <input type="number" id="value" step="0.01" required>
+
+            <button type="submit">확인</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
