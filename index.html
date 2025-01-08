@@ -3,22 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>제품 범위 확인</title>
+    <title>여벌 범위 확인 프로그램</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>제품 범위 확인 프로그램</h1>
+        <h1>여벌 범위 확인 프로그램</h1>
         <form id="rangeCheckerForm">
+            <!-- 회사명 드롭다운 -->
             <label for="company">회사명:</label>
-            <input type="text" id="company" required>
+            <select id="company" required>
+                <option value="">회사 선택</option>
+                <option value="chemi">케미</option>
+                <option value="nikon">니콘</option>
+                <option value="zeiss">자이스</option>
+                <option value="tokai">토카이</option>
+                <option value="daemyung">다가스</option>
+            </select>
 
-            <label for="product">제품명:</label>
-            <input type="text" id="product" required>
+            <label for="refractiveIndex">굴절률:</label>
+            <select id="refractiveIndex">
+                <option value="">굴절률 선택</option>
+                <option value="1.56">1.56</option>
+                <option value="1.60">1.60</option>
+                <option value="1.67">1.67</option>
+                <option value="1.74">1.74</option>
+                <option value="1.76">1.76</option>
+            </select>
 
-            <label for="value">부호 포함 소수값:</label>
-            <input type="number" id="value" step="0.01" required>
+            <!-- 설계 드롭다운 -->
+            <label for="product">설계:</label>
+            <select id="product" required>
+                <option value="">설계 선택</option>
+            </select>
 
+            
+
+            <label for="extraOption">코팅/색상:</label>
+            <select id="extraOption">
+                <option value="">옵션 선택</option>
+            </select>
+
+            <!-- S값 입력 -->
+            <label for="sValue">S값 (부호 포함 소수값, 예: -4.25):</label>
+            <input type="number" id="sValue" step="0.01" placeholder="S값을 입력하세요" required>
+
+            <!-- C값 입력 -->
+            <label for="cValue">C값 (부호 포함 소수값, 예: -2.50):</label>
+            <input type="number" id="cValue" step="0.01" placeholder="C값을 입력하세요" required>
+
+            <!-- 확인 버튼 -->
             <button type="submit">확인</button>
         </form>
         <div id="result"></div>
