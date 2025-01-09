@@ -12,7 +12,7 @@ const refractiveIndexOptions = {
     default: ['1.56', '1.60', '1.67', '1.74'],
 };
 
-// 한글 설계 ↔ 영문 설계 매핑
+// 한글 ↔ 영문 매핑
 const productMapping = {
     비구면: 'asp',
     양면비구면: 'das',
@@ -28,9 +28,18 @@ const companyMapping = {
     다가스: 'daemyung', // 추가로 필요한 경우
 };
 
-// 회사 데이터 범위 (예: rangeData 사용)
+// optiondata : 코팅
 const extraOptionData = {
     nikon: {
+        photochromic:{
+            '1.56':[
+                {value: 'gr', label: '구면 그레이'}
+            ],
+            '1.60':[
+                {value: 'gr', label: '비구면 그레이'},
+                {value: 'br', label: '비구면 브라운'}
+            ]
+        },
         asp: {
             '1.60': [
                 { value: 'bluv', label: 'BLUV' },
@@ -41,23 +50,218 @@ const extraOptionData = {
                 { value: 'seeuv', label: 'SEE+UV' },
             ],
         },
+        das: {
+            '1.60': [
+                { value: 'pureblue', label: 'PUREBLUE(SCN)'}
+            ],
+            '1.67': [
+                { value: 'pureblue', label: 'PUREBLUE(SCN)'}
+            ],
+            '1.74': [
+                { value: 'seeCoatNext', label: 'SCN'}
+            ],
+        }
     },
+    chemi: {
+        photochromic:{
+            '1.60':[
+                {value: 'gr', label: '구면 그레이'},
+                {value: 'br', label: '구면 브라운'},
+                {value: 'exgr', label: '구면 엑스트라그레이'},
+            ]
+        },
+        asp: {
+            '1.56': [
+                { value: 'perfect', label: '퍼펙트' },
+                { value: 'uv', label: '발수' },
+            ],
+            '1.60': [
+                { value: 'perfect', label: '퍼펙트' },
+                { value: 'uv', label: '발수' },
+            ],
+            '1.67': [
+                { value: 'perfect', label: '퍼펙트' },
+                { value: 'uv', label: '발수' },
+            ],
+            '1.74': [
+                { value: 'perfect', label: '퍼펙트' },
+                { value: 'uv', label: '발수' },
+            ],
+        },
+        das:{
+            '1.60':[
+                {value: 'perfect', label: '퍼펙트'}
+            ],
+            '1.67':[
+                {value: 'perfect', label: '퍼펙트'}
+            ],
+            '1.74':[
+                { value: 'perfect', label: '퍼펙트' },
+                { value: 'uv', label: '발수' },
+            ]
+        }
+    },
+    zeiss:{
+        photochromic:{
+            '1.56':[
+                {value: 'gr', label: '클리어뷰 포토퓨전 그레이'},
+            ],
+            '1.60':[
+                {value: 'gr', label: '클리어뷰 포토퓨전 그레이'},
+                {value: 'br', label: '클리어뷰 포토퓨전 브라운'},
+                {value: 'exgr', label: '클리어뷰 엑스트라 그레이'},
+            ]
+        },
+        asp:{
+            '1.56':[
+                {value: 'dd', label: 'DD'},
+                {value: 'bp', label: 'BP'},
+                {value: 'dp', label: 'DP'},
+            ],
+            '1.60':[
+                {value: 'dd', label: 'DD'},
+                {value: 'bp', label: 'BP'},
+                {value: 'dp', label: 'DP'},
+            ],
+            '1.67':[
+                {value: 'dd', label: 'DD'},
+                {value: 'bp', label: 'BP'},
+                {value: 'dp', label: 'DP'},
+            ],
+        },
+        clearview:{
+            '1.56':[
+                {value: 'dp', label: 'DP'},
+                {value: 'bgdp', label: 'BGDP'},
+            ],
+            '1.60':[
+                {value: 'dp', label: 'DP'},
+                {value: 'bgdp', label: 'BGDP'},
+            ],
+            '1.67':[
+                {value: 'dp', label: 'DP'},
+                {value: 'bgdp', label: 'BGDP'},
+            ],
+        }
+    },
+    tokai:{
+        asp:{
+            '1.60':[
+                {value: 'puv', label: 'P-UV 루티나'}
+            ],
+            '1.67':[
+                {value: 'puv', label: 'P-UV 루티나'}
+            ],
+            '1.76':[
+                {value: 'puv', label: 'P-UV 루티나'}
+            ],
+        },
+        das:{
+            '1.60':[
+                {value: 'puv', label: 'P-UV 루티나'}
+            ],
+            '1.67':[
+                {value: 'puv', label: 'P-UV 루티나'}
+            ],
+            '1.76':[
+                {value: 'puv', label: 'P-UV 루티나'}
+            ],
+        }
+    },
+    daemyung:{
+        asp:{
+            '1.60':[
+                {value: 'uvtect', label: 'UV-TECT lite'},
+                {value: 'uv', label: '발수'}
+            ],
+            '1.67':[
+                {value: 'uvtect', label: 'UV-TECT lite'},
+                {value: 'uv', label: '발수'}
+            ],
+            '1.74':[
+                {value: 'uvtect', label: 'UV-TECT lite'},
+                {value: 'uv', label: '발수'}
+            ]
+        },
+        das:{
+            '1.60':[
+                {value: 'uvtect', label: 'UV-TECT lite'},
+                {value: 'uv', label: '발수'}
+            ],
+            '1.67':[
+                {value: 'uvtect', label: 'UV-TECT lite'},
+                {value: 'uv', label: '발수'}
+            ],
+            '1.74':[
+                {value: 'uvtect', label: 'UV-TECT lite'},
+                {value: 'uv', label: '발수'}
+            ]
+        }
+    }
 };
 
 const rangeData = {
     chemi: {
+        photochromic:{
+            '1.60':{
+                gr: {
+                    sRange: { min: -6.00, max: +3.00 },
+                    cRules: [
+                        { sMin: -6.00, sMax: 0.00, cMin: -2.00, cMax: 0.00 },
+                        { sMin: 0.25, sMax: 1.00, cMin: -2.00, cMax: 0.00 },
+                        { sMin: 1.25, sMax: 1.25, cMin: -1.75, cMax: 0.00 },
+                        { sMin: 1.50, sMax: 1.50, cMin: -1.50, cMax: 0.00 },
+                        { sMin: 1.75, sMax: 1.75, cMin: -1.25, cMax: 0.00 },
+                        { sMin: 2.00, sMax: 2.00, cMin: -1.00, cMax: 0.00 },
+                        { sMin: 2.25, sMax: 2.25, cMin: -0.75, cMax: 0.00 },
+                        { sMin: 2.50, sMax: 2.50, cMin: -0.50, cMax: 0.00 },
+                        { sMin: 2.75, sMax: 2.75, cMin: -0.25, cMax: 0.00 },
+                        { sMin: 3.00, sMax: 3.00, cMin: 0.00, cMax: 0.00 },
+                    ],
+                },
+                br: {
+                    sRange: { min: -6.00, max: +3.00 },
+                    cRules: [
+                        { sMin: -6.00, sMax: 0.00, cMin: -2.00, cMax: 0.00 },
+                        { sMin: 0.25, sMax: 1.00, cMin: -2.00, cMax: 0.00 },
+                        { sMin: 1.25, sMax: 1.25, cMin: -1.75, cMax: 0.00 },
+                        { sMin: 1.50, sMax: 1.50, cMin: -1.50, cMax: 0.00 },
+                        { sMin: 1.75, sMax: 1.75, cMin: -1.25, cMax: 0.00 },
+                        { sMin: 2.00, sMax: 2.00, cMin: -1.00, cMax: 0.00 },
+                        { sMin: 2.25, sMax: 2.25, cMin: -0.75, cMax: 0.00 },
+                        { sMin: 2.50, sMax: 2.50, cMin: -0.50, cMax: 0.00 },
+                        { sMin: 2.75, sMax: 2.75, cMin: -0.25, cMax: 0.00 },
+                        { sMin: 3.00, sMax: 3.00, cMin: 0.00, cMax: 0.00 },
+                    ],
+                },
+                exgr: {
+                    sRange: { min: -6.00, max: 0.00 },
+                    cRules: [
+                        { sMin: -6.00, sMax: 0.00, cMin: -2.00, cMax: 0.00 },
+                    ]
+                }
+            }
+        },
         asp: {
             '1.56': {
-                퍼펙트: {
+                perfect: {
                     sRange: { min: -4.00, max: +6.00 },
                     cRules: [
                         { sMin: -4.00, sMax: 0.00, cMin: -4.00, cMax: 0.00 },
                         { sMin: 0.25, sMax: +6.00, cMin: -2.00, cMax: 0.00 },
                     ],
                 },
+                uv: {
+                    sRange: { min: -4.00, max: +6.00 },
+                    cRules: [
+                        { sMin: -4.00, sMax: 0.00, cMin: -4.00, cMax: 0.00 },
+                        { sMin: 0.25, sMax: +6.00, cMin: -2.00, cMax: 0.00 },
+                        { sMin: -8.00, sMax: -4.25, cMin: -2.00, cMax: 0.00 },
+                    ],
+                },
             },
             '1.60': {
-                퍼펙트: {
+                perfect: {
                     sRange: { min: -10.00, max: 6.00 },
                     cRules: [
                         { sMin: -8.00, sMax: 0.00, cMin: -3.00, cMax: 0.00 },
@@ -65,28 +269,121 @@ const rangeData = {
                         { sMin: 0.25, sMax: +6.00, cMin: -2.00, cMax: 0.00 },
                     ],
                 },
+                uv: {
+                    sRange: { min: -10.00, max: +6.00 },
+                    cRules: [
+                        { sMin: -8.00, sMax: 0.00, cMin: -3.00, cMax: 0.00 },
+                        { sMin: 0.25, sMax: +6.00, cMin: -2.00, cMax: 0.00 },
+                        { sMin: -10.00, sMax: -8.25, cMin: -2.00, cMax: 0.00 },
+                    ],
+                },
             },
             '1.67': {
-                퍼펙트: {
+                perfect: {
                     sRange: { min: -6.00, max: 4.00 },
                     cRules: [
                         { sMin: -6.00, sMax: 0.00, cMin: -3.00, cMax: 0.00 },
                         { sMin: 0.25, sMax: 4.00, cMin: -2.00, cMax: 0.00 },
                     ],
                 },
+                uv: {
+                    sRange: { min: -15.00, max: +6.00 },
+                    cRules: [
+                        { sMin: -10.00, sMax: 0.00, cMin: -4.00, cMax: 0.00 },
+                        { sMin: 0.25, sMax: +6.00, cMin: -2.00, cMax: 0.00 },
+                        { sMin: -12.00, sMax: -10.25, cMin: -2.00, cMax: 0.00 },
+                        { sMin: -12.50, sMax: -12.50, cMin: -0.00, cMax: 0.00 },
+                        { sMin: -13.00, sMax: -13.00, cMin: -0.00, cMax: 0.00 },
+                        { sMin: -13.50, sMax: -13.50, cMin: -0.00, cMax: 0.00 },
+                        { sMin: -14.00, sMax: -14.00, cMin: -0.00, cMax: 0.00 },
+                        { sMin: -14.50, sMax: -14.50, cMin: -0.00, cMax: 0.00 },
+                        { sMin: -15.00, sMax: -15.00, cMin: -0.00, cMax: 0.00 },
+                    ],
+                },
             },
             '1.74': {
-                퍼펙트: {
+                perfect: {
                     sRange: { min: -15.00, max: -1.00 },
                     cRules: [
                         { sMin: -6.00, sMax: 0.00, cMin: -3.00, cMax: 0.00 },
                         { sMin: 0.25, sMax: 4.00, cMin: -2.00, cMax: 0.00 },
                     ],
                 },
+                uv: {
+                    sRange: { min: -15.00, max: -1.00 },
+                    cRules: [
+                        { sMin: -10.00, sMax: 0.00, cMin: -4.00, cMax: 0.00 },
+                        { sMin: -12.00, sMax: -10.25, cMin: -2.00, cMax: 0.00 },
+                        { sMin: -13.00, sMax: -12.25, cMin: -0.00, cMax: 0.00 },
+                        { sMin: -13.50, sMax: -13.50, cMin: -0.00, cMax: 0.00 },
+                        { sMin: -14.00, sMax: -14.00, cMin: -0.00, cMax: 0.00 },
+                        { sMin: -14.50, sMax: -14.50, cMin: -0.00, cMax: 0.00 },
+                        { sMin: -15.00, sMax: -15.00, cMin: -0.00, cMax: 0.00 },
+                    ],
+                },
             },
         },
+        das:{
+            '1.60':{
+                perfect:{
+                    sRange: { min: -5.00, max: 0.00 },
+                    cRules: [
+                        { sMin: -4.00, sMax: 0.00, cMin: -4.00, cMax: 0.00 },
+                        { sMin: -5.00, sMax: -4.25, cMin: -2.00, cMax: 0.00 }
+                    ],
+                },
+            },
+            '1.67':{
+                perfect:{
+                    sRange: { min: -8.00, max: -2.00 },
+                    cRules: [
+                        { sMin: -8.00, sMax: -2.00, cMin: -4.00, cMax: 0.00 }
+                    ],
+                },
+            },
+            '1.74':{
+                perfect:{
+                    sRange: { min: -12.00, max: -3.00 },
+                    cRules: [
+                        { sMin: -8.00, sMax: -3.00, cMin: -4.00, cMax: 0.00 },
+                        { sMin: -12.00, sMax: -8.25, cMin: -2.00, cMax: 0.00 }
+                    ],
+                },
+                uv:{
+                    sRange: { min: -12.00, max: -3.00 },
+                    cRules: [
+                        { sMin: -12.00, sMax: -3.00, cMin: -2.00, cMax: 0.00 },
+                    ],
+                },
+            }
+        }
     },
     nikon: {
+        photochromic:{
+            '1.56':{
+                gr:{
+                    sRange: { min: -6.00, max: 3.00 },
+                    cRules: [
+                        { sMin: -4.75, sMax: 3.00, cMin: -2.00, cMax: 0.00 },
+                        { sMin: -6.00, sMax: -5.00, cMin: 0.00, cMax: 0.00 },
+                    ],
+                }
+            },
+            '1.60':{
+                gr:{
+                    sRange: { min: -6.00, max: 3.00 },
+                    cRules: [
+                        { sMin: -6.00, sMax: 3.00, cMin: -2.00, cMax: 0.00 }
+                    ],
+                },
+                br:{
+                    sRange: { min: -6.00, max: 3.00 },
+                    cRules: [
+                        { sMin: -6.00, sMax: 3.00, cMin: -2.00, cMax: 0.00 }
+                    ],
+                }
+            }
+        },
         asp: {
             '1.60': {
                 seeuv: {
@@ -97,10 +394,11 @@ const rangeData = {
                     ],
                 },
                 bluv: {
-                    sRange: { min: -6.00, max: 4.00 }, // S값 전체 범위
+                    sRange: { min: -10.00, max: 6.00 }, 
                     cRules: [
-                        { sMin: -6.00, sMax: 0.00, cMin: -3.00, cMax: 0.00 }, // S값 -6.00 ~ 0.00
-                        { sMin: 0.25, sMax: 4.00, cMin: -2.00, cMax: 0.00 }, // S값 0.25 ~ 4.00
+                        { sMin: -8.00, sMax: 0.00, cMin: -3.00, cMax: 0.00 }, 
+                        { sMin: 0.25, sMax: 6.00, cMin: -2.00, cMax: 0.00 },
+                        { sMin: -10.00, sMax: -8.25, cMin: 0.00, cMax: 0.00 }, 
                     ],
                 },
             },
@@ -114,7 +412,436 @@ const rangeData = {
                 },
             },
         },
+        das: {
+            '1.60': {
+                pureblue: {
+                    sRange: { min: -6.00, max: 0.00 },
+                    cRules: [
+                        { sMin: -6.00, sMax: 0.00, cMin: -2.00, cMax: 0.00 },
+                    ],
+                },
+            },
+            '1.67': {
+                pureblue: {
+                    sRange: { min: -8.00, max: -3.00 },
+                    cRules: [
+                        { sMin: -8.00, sMax: -3.00, cMin: -2.00, cMax: 0.00 },
+                        { sMin: -10.00, sMax: -8.25, cMin: 0.00, cMax: 0.00 },
+                    ],
+                },
+            },
+            '1.74': {
+                seeCoatNext: {
+                    sRange: { min: -10.00, max: -3.00 },
+                    cRules: [
+                        { sMin: -10.00, sMax: -3.00, cMin: -2.00, cMax: 0.00 },
+                        { sMin: -12.00, sMax: -10.25, cMin: 0.00, cMax: 0.00 },
+                    ],
+                },
+            },
+        },
     },
+    zeiss: {
+        photochromic:{
+            '1.56':{
+                gr:{
+                    sRange: { min: -4.00, max: 3.00 },
+                    cRules: [
+                        { sMin: -4.00, sMax: 3.00, cMin: -2.00, cMax: 0.00 }
+                    ],
+                }
+            },
+            '1.60':{
+                gr:{
+                    sRange: { min: -6.00, max: 4.00 },
+                    cRules: [
+                        { sMin: -6.00, sMax: 4.00, cMin: -2.00, cMax: 0.00 }
+                    ],
+                },
+                br:{
+                    sRange: { min: -6.00, max: 4.00 },
+                    cRules: [
+                        { sMin: -6.00, sMax: 4.00, cMin: -2.00, cMax: 0.00 }
+                    ],
+                },
+                exgr:{
+                    sRange: { min: -6.00, max: 4.00 },
+                    cRules: [
+                        { sMin: -6.00, sMax: 4.00, cMin: -2.00, cMax: 0.00 }
+                    ],
+                }
+            }
+        },
+        asp:{
+            '1.56':{
+                dd: {
+                    sRange: { min: -5.00, max: +4.00 },
+                    cRules: [
+                        { sMin: -5.00, sMax: 0.00, cMin: -2.00, cMax: 0.00 },
+                        { sMin: 0.25, sMax: +4.00, cMin: -2.00, cMax: 0.00 },
+                    ],
+                },
+                bp: {
+                    sRange: { min: -5.00, max: +4.00 },
+                    cRules: [
+                        { sMin: -5.00, sMax: 0.00, cMin: -2.00, cMax: 0.00 },
+                        { sMin: 0.25, sMax: +4.00, cMin: -2.00, cMax: 0.00 },
+                    ],
+                },
+                dp: {
+                    sRange: { min: -5.00, max: +4.00 },
+                    cRules: [
+                        { sMin: -5.00, sMax: 0.00, cMin: -2.00, cMax: 0.00 },
+                        { sMin: 0.25, sMax: +4.00, cMin: -2.00, cMax: 0.00 },
+                    ],
+                },
+            },
+            '1.60':{
+                dd: {
+                    sRange: { min: -6.00, max: +4.00 },
+                    cRules: [
+                        { sMin: -6.00, sMax: 0.00, cMin: -2.00, cMax: 0.00 },
+                        { sMin: 0.25, sMax: +4.00, cMin: -2.00, cMax: 0.00 },
+                    ],
+                },
+                bp: {
+                    sRange: { min: -6.00, max: +4.00 },
+                    cRules: [
+                        { sMin: -6.00, sMax: 0.00, cMin: -2.00, cMax: 0.00 },
+                        { sMin: 0.25, sMax: +4.00, cMin: -2.00, cMax: 0.00 },
+                    ],
+                },
+                dp: {
+                    sRange: { min: -6.00, max: +4.00 },
+                    cRules: [
+                        { sMin: -6.00, sMax: 0.00, cMin: -2.00, cMax: 0.00 },
+                        { sMin: 0.25, sMax: +4.00, cMin: -2.00, cMax: 0.00 },
+                    ],
+                },
+            },
+            '1.67':{
+                dd: {
+                    sRange: { min: -10.00, max: -3.00 },
+                    cRules: [
+                        { sMin: -8.00, sMax: -3.00, cMin: -2.00, cMax: 0.00 },
+                        { sMin: -8.25, sMax: -8.25, cMin: -1.75, cMax: 0.00 },
+                        { sMin: -8.50, sMax: -8.50, cMin: -1.50, cMax: 0.00 },
+                        { sMin: -8.75, sMax: -8.75, cMin: -1.25, cMax: 0.00 },
+                        { sMin: -9.00, sMax: -9.00, cMin: -1.00, cMax: 0.00 },
+                        { sMin: -9.25, sMax: -9.25, cMin: -0.75, cMax: 0.00 },
+                        { sMin: -9.50, sMax: -9.50, cMin: -0.50, cMax: 0.00 },
+                        { sMin: -9.75, sMax: -9.75, cMin: -0.25, cMax: 0.00 },
+                        { sMin: -10.00, sMax: -10.00, cMin: -0.00, cMax: 0.00 },
+                    ],
+                },
+                bp: {
+                    sRange: { min: -10.00, max: -3.00 },
+                    cRules: [
+                        { sMin: -8.00, sMax: -3.00, cMin: -2.00, cMax: 0.00 },
+                        { sMin: -8.25, sMax: -8.25, cMin: -1.75, cMax: 0.00 },
+                        { sMin: -8.50, sMax: -8.50, cMin: -1.50, cMax: 0.00 },
+                        { sMin: -8.75, sMax: -8.75, cMin: -1.25, cMax: 0.00 },
+                        { sMin: -9.00, sMax: -9.00, cMin: -1.00, cMax: 0.00 },
+                        { sMin: -9.25, sMax: -9.25, cMin: -0.75, cMax: 0.00 },
+                        { sMin: -9.50, sMax: -9.50, cMin: -0.50, cMax: 0.00 },
+                        { sMin: -9.75, sMax: -9.75, cMin: -0.25, cMax: 0.00 },
+                        { sMin: -10.00, sMax: -10.00, cMin: -0.00, cMax: 0.00 },
+                    ],
+                },
+                dp: {
+                    sRange: { min: -10.00, max: -3.00 },
+                    cRules: [
+                        { sMin: -8.00, sMax: -3.00, cMin: -2.00, cMax: 0.00 },
+                        { sMin: -8.25, sMax: -8.25, cMin: -1.75, cMax: 0.00 },
+                        { sMin: -8.50, sMax: -8.50, cMin: -1.50, cMax: 0.00 },
+                        { sMin: -8.75, sMax: -8.75, cMin: -1.25, cMax: 0.00 },
+                        { sMin: -9.00, sMax: -9.00, cMin: -1.00, cMax: 0.00 },
+                        { sMin: -9.25, sMax: -9.25, cMin: -0.75, cMax: 0.00 },
+                        { sMin: -9.50, sMax: -9.50, cMin: -0.50, cMax: 0.00 },
+                        { sMin: -9.75, sMax: -9.75, cMin: -0.25, cMax: 0.00 },
+                        { sMin: -10.00, sMax: -10.00, cMin: -0.00, cMax: 0.00 },
+                    ],
+                },
+            }
+        },
+        clearview:{
+            '1.56':{
+                dp: {
+                    sRange: { min: -4.00, max: +3.00 },
+                    cRules: [
+                        { sMin: -4.00, sMax: 0.00, cMin: -2.00, cMax: 0.00 },
+                        { sMin: 0.25, sMax: +3.00, cMin: -2.00, cMax: 0.00 },
+                    ],
+                },
+                bgdp: {
+                    sRange: { min: -4.00, max: +3.00 },
+                    cRules: [
+                        { sMin: -4.00, sMax: 0.00, cMin: -2.00, cMax: 0.00 },
+                        { sMin: 0.25, sMax: +3.00, cMin: -2.00, cMax: 0.00 },
+                    ],
+                },
+            },
+            '1.60':{
+                dp: {
+                    sRange: { min: -6.00, max: +4.00 },
+                    cRules: [
+                        { sMin: -6.00, sMax: 0.00, cMin: -3.00, cMax: 0.00 },
+                        { sMin: 0.25, sMax: +4.00, cMin: -2.00, cMax: 0.00 },
+                    ],
+                },
+                bgdp: {
+                    sRange: { min: -6.00, max: +4.00 },
+                    cRules: [
+                        { sMin: -6.00, sMax: 0.00, cMin: -3.00, cMax: 0.00 },
+                        { sMin: 0.25, sMax: +4.00, cMin: -2.00, cMax: 0.00 },
+                    ],
+                },
+            },
+            '1.67':{
+                dp: {
+                    sRange: { min: -8.00, max: 0.00 },
+                    cRules: [
+                        { sMin: 0.00, sMax: 0.00, cMin: -3.00, cMax: -2.00 },
+                        { sMin: -7.00, sMax: -2.00, cMin: -3.00, cMax: 0.00 },
+                        { sMin: -7.25, sMax: -7.25, cMin: -2.75, cMax: 0.00 },                        { sMin: -8.50, sMax: -8.50, cMin: -1.50, cMax: 0.00 },
+                        { sMin: -7.50, sMax: -7.50, cMin: -2.50, cMax: 0.00 },
+                        { sMin: -7.75, sMax: -7.75, cMin: -2.25, cMax: 0.00 },
+                        { sMin: -8.00, sMax: -8.00, cMin: -2.00, cMax: 0.00 },
+                    ],
+                },
+                bgdp: {
+                    sRange: { min: -8.00, max: 0.00 },
+                    cRules: [
+                        { sMin: 0.00, sMax: 0.00, cMin: -3.00, cMax: -2.00 },
+                        { sMin: -7.00, sMax: -2.00, cMin: -3.00, cMax: 0.00 },
+                        { sMin: -7.25, sMax: -7.25, cMin: -2.75, cMax: 0.00 },                        { sMin: -8.50, sMax: -8.50, cMin: -1.50, cMax: 0.00 },
+                        { sMin: -7.50, sMax: -7.50, cMin: -2.50, cMax: 0.00 },
+                        { sMin: -7.75, sMax: -7.75, cMin: -2.25, cMax: 0.00 },
+                        { sMin: -8.00, sMax: -8.00, cMin: -2.00, cMax: 0.00 },
+                    ],
+                },
+            },
+            '1.74':{
+                dp: {
+                    sRange: { min: -14.00, max: -3.00 },
+                    cRules: [
+                        { sMin: -10.00, sMax: -3.00, cMin: -2.00, cMax: -0.00 },
+                        { sMin: -10.25, sMax: -10.25, cMin: -1.75, cMax: -0.00 },
+                        { sMin: -10.50, sMax: -10.50, cMin: -1.50, cMax: -0.00 },
+                        { sMin: -10.75, sMax: -10.75, cMin: -1.25, cMax: -0.00 },
+                        { sMin: -11.00, sMax: -11.00, cMin: -1.00, cMax: -0.00 },
+                        { sMin: -11.25, sMax: -11.25, cMin: -0.75, cMax: -0.75 },
+                        { sMin: -11.50, sMax: -11.50, cMin: -0.50, cMax: -0.50 },
+                        { sMin: -11.75, sMax: -11.75, cMin: -0.25, cMax: -0.25 },
+                        { sMin: -14.00, sMax: -12.00, cMin: -0.00, cMax: -0.00 },
+                    ],
+                },
+                bgdp: {
+                    sRange: { min: -14.00, max: -3.00 },
+                    cRules: [
+                        { sMin: -10.00, sMax: -3.00, cMin: -2.00, cMax: -0.00 },
+                        { sMin: -10.25, sMax: -10.25, cMin: -1.75, cMax: -0.00 },
+                        { sMin: -10.50, sMax: -10.50, cMin: -1.50, cMax: -0.00 },
+                        { sMin: -10.75, sMax: -10.75, cMin: -1.25, cMax: -0.00 },
+                        { sMin: -11.00, sMax: -11.00, cMin: -1.00, cMax: -0.00 },
+                        { sMin: -11.25, sMax: -11.25, cMin: -0.75, cMax: -0.75 },
+                        { sMin: -11.50, sMax: -11.50, cMin: -0.50, cMax: -0.50 },
+                        { sMin: -11.75, sMax: -11.75, cMin: -0.25, cMax: -0.25 },
+                        { sMin: -14.00, sMax: -12.00, cMin: -0.00, cMax: -0.00 },
+                    ],
+                },
+            }
+        }
+    },
+    tokai:{
+        asp:{
+            '1.60':{
+                puv: {
+                    sRange: { min: -5.00, max: +4.00 },
+                    cRules: [
+                        
+                    ],
+                },
+            },
+            '1.67':{
+                puv: {
+                    sRange: { min: -8.00, max: -2.00 },
+                    cRules: [
+                        { sMin: -8.00, sMax: -2.00, cMin: -2.00, cMax: 0.00 },
+                    ],
+                },
+            },
+            '1.76':{
+                puv: {
+                    sRange: { min: -12.00, max: -4.00 },
+                    cRules: [
+                        { sMin: -10.00, sMax: -4.00, cMin: -2.00, cMax: 0.00 },
+                        { sMin: -12.00, sMax: -10.25, cMin: 0.00, cMax: 0.00 },
+                    ],
+                },
+            },
+        },
+        das:{
+            '1.60':{
+                puv: {
+                    sRange: { min: -6.50, max: 0.00 },
+                    cRules: [
+                        { sMin: -0.75, sMax: 0.00, cMin: 0.00, cMax: 0.00 },
+                        { sMin: -6.00, sMax: -1.00, cMin: -2.00, cMax: 0.00 },
+                        { sMin: -6.50, sMax: -6.25, cMin: 0.00, cMax: 0.00 },
+                    ],
+                },
+            },
+            '1.76':{
+                puv: {
+                    sRange: { min: -12.00, max: -4.00 },
+                    cRules: [
+                        { sMin: -10.00, sMax: -4.00, cMin: -2.00, cMax: 0.00 },
+                        { sMin: -12.00, sMax: -10.25, cMin: 0.00, cMax: 0.00 },
+                    ],
+                },
+            }
+        }
+    },
+    daemyung:{
+        asp:{
+            '1.60':{
+                uvtect:{
+                    sRange: { min: -10.00, max: +8.00 },
+                    cRules: [
+                        { sMin: -6.00, sMax: 0.00, cMin: -4.00, cMax: 0.00 },
+                        { sMin: -8.00, sMax: -6.25, cMin: -3.00, cMax: 0.00 },
+                        { sMin: -10.00, sMax: +8.00, cMin: -2.00, cMax: 0.00 },
+                    ],
+                },
+                uv:{
+                    sRange: { min: -10.00, max: +8.00 },
+                    cRules: [
+                        { sMin: -6.00, sMax: 0.00, cMin: -4.00, cMax: 0.00 },
+                        { sMin: -8.00, sMax: -6.25, cMin: -3.00, cMax: 0.00 },
+                        { sMin: -10.00, sMax: +8.00, cMin: -2.00, cMax: 0.00 },
+                    ],
+                }
+            },
+            '1.67':{
+                uvtect:{
+                    sRange: { min: -15.00, max: 0.00 },
+                    cRules: [
+                        { sMin: -10.00, sMax: 0.00, cMin: -4.00, cMax: 0.00 },
+                        { sMin: -12.00, sMax: -10.25, cMin: -2.00, cMax: 0.00 },
+                        { sMin: -12.50, sMax: -12.50, cMin: 0.00, cMax: 0.00 },
+                        { sMin: -13.00, sMax: -13.00, cMin: 0.00, cMax: 0.00 },
+                        { sMin: -13.50, sMax: -13.50, cMin: 0.00, cMax: 0.00 },
+                        { sMin: -14.00, sMax: -14.00, cMin: 0.00, cMax: 0.00 },
+                        { sMin: -14.50, sMax: -14.50, cMin: 0.00, cMax: 0.00 },
+                        { sMin: -15.00, sMax: -15.00, cMin: 0.00, cMax: 0.00 },
+                    ],
+                },
+                uv:{
+                    sRange: { min: -15.00, max: 0.00 },
+                    cRules: [
+                        { sMin: -10.00, sMax: 0.00, cMin: -4.00, cMax: 0.00 },
+                        { sMin: -12.00, sMax: -10.25, cMin: -2.00, cMax: 0.00 },
+                        { sMin: -12.50, sMax: -12.50, cMin: 0.00, cMax: 0.00 },
+                        { sMin: -13.00, sMax: -13.00, cMin: 0.00, cMax: 0.00 },
+                        { sMin: -13.50, sMax: -13.50, cMin: 0.00, cMax: 0.00 },
+                        { sMin: -14.00, sMax: -14.00, cMin: 0.00, cMax: 0.00 },
+                        { sMin: -14.50, sMax: -14.50, cMin: 0.00, cMax: 0.00 },
+                        { sMin: -15.00, sMax: -15.00, cMin: 0.00, cMax: 0.00 },
+                    ],
+                }
+            },
+            '1.74':{
+                uvtect:{
+                    sRange: { min: -15.00, max: -2.25 },
+                    cRules: [
+                        { sMin: -10.00, sMax: -2.25, cMin: -4.00, cMax: 0.00 },
+                        { sMin: -12.00, sMax: -10.25, cMin: -3.00, cMax: 0.00 },
+                        { sMin: -13.00, sMax: -12.25, cMin: -2.00, cMax: 0.00 },
+                        { sMin: -13.50, sMax: -13.50, cMin: 0.00, cMax: 0.00 },
+                        { sMin: -14.00, sMax: -14.00, cMin: 0.00, cMax: 0.00 },
+                        { sMin: -14.50, sMax: -14.50, cMin: 0.00, cMax: 0.00 },
+                        { sMin: -15.00, sMax: -15.00, cMin: 0.00, cMax: 0.00 },
+                    ],
+                },
+                uv:{
+                    sRange: { min: -15.00, max: -2.25 },
+                    cRules: [
+                        { sMin: -10.00, sMax: -2.25, cMin: -4.00, cMax: 0.00 },
+                        { sMin: -12.00, sMax: -10.25, cMin: -3.00, cMax: 0.00 },
+                        { sMin: -13.00, sMax: -12.25, cMin: -2.00, cMax: 0.00 },
+                        { sMin: -13.50, sMax: -13.50, cMin: 0.00, cMax: 0.00 },
+                        { sMin: -14.00, sMax: -14.00, cMin: 0.00, cMax: 0.00 },
+                        { sMin: -14.50, sMax: -14.50, cMin: 0.00, cMax: 0.00 },
+                        { sMin: -15.00, sMax: -15.00, cMin: 0.00, cMax: 0.00 },
+                    ],
+                }
+            }
+        },
+        das:{
+            '1.60':{
+                uvtect:{
+                    sRange: { min: -6.00, max: 0.00 },
+                    cRules: [
+                        { sMin: -6.00, sMax: 0.00, cMin: -2.00, cMax: 0.00 },
+                    ],
+                },
+                uv:{
+                    sRange: { min: -6.00, max: 0.00 },
+                    cRules: [
+                        { sMin: -6.00, sMax: 0.00, cMin: -2.00, cMax: 0.00 },
+                    ],
+                }
+            },
+            '1.67':{
+                uvtect:{
+                    sRange: { min: -10.00, max: -2.50 },
+                    cRules: [
+                        { sMin: -8.25, sMax: -2.25, cMin: -2.00, cMax: 0.00 },
+                        { sMin: -8.50, sMax: -8.50, cMin: -1.75, cMax: 0.00 },
+                        { sMin: -8.75, sMax: -8.75, cMin: -1.50, cMax: 0.00 },
+                        { sMin: -9.00, sMax: -9.00, cMin: -1.25, cMax: 0.00 },
+                        { sMin: -9.25, sMax: -9.25, cMin: -1.00, cMax: 0.00 },
+                        { sMin: -9.50, sMax: -9.50, cMin: -0.75, cMax: 0.00 },
+                        { sMin: -9.75, sMax: -9.75, cMin: -0.50, cMax: 0.00 },
+                        { sMin: -10.00, sMax: -10.00, cMin: -0.00, cMax: 0.00 },
+                    ],
+                },
+                uv:{
+                    sRange: { min: -10.00, max: -2.50 },
+                    cRules: [
+                        { sMin: -8.25, sMax: -2.25, cMin: -2.00, cMax: 0.00 },
+                        { sMin: -8.50, sMax: -8.50, cMin: -1.75, cMax: 0.00 },
+                        { sMin: -8.75, sMax: -8.75, cMin: -1.50, cMax: 0.00 },
+                        { sMin: -9.00, sMax: -9.00, cMin: -1.25, cMax: 0.00 },
+                        { sMin: -9.25, sMax: -9.25, cMin: -1.00, cMax: 0.00 },
+                        { sMin: -9.50, sMax: -9.50, cMin: -0.75, cMax: 0.00 },
+                        { sMin: -9.75, sMax: -9.75, cMin: -0.50, cMax: 0.00 },
+                        { sMin: -10.00, sMax: -10.00, cMin: -0.00, cMax: 0.00 },
+                    ],
+                },
+            },
+            '1.74':{
+                uvtect:{
+                    sRange: { min: -15.00, max: -3.00 },
+                    cRules: [
+                        { sMin: -10.00, sMax: -3.00, cMin: -2.00, cMax: 0.00 },
+                        { sMin: -8.00, sMax: -4.00, cMin: -4.00, cMax: 0.00 },
+                        { sMin: -10.50, sMax: -10.50, cMin: -2.00, cMax: 0.00 },
+                        { sMin: -11.00, sMax: -11.00, cMin: -2.00, cMax: 0.00 },                       
+                        { sMin: -11.50, sMax: -11.50, cMin: -2.00, cMax: 0.00 },                       
+                        { sMin: -12.00, sMax: -12.00, cMin: -2.00, cMax: 0.00 }, 
+                        { sMin: -12.50, sMax: -12.50, cMin: 0.00, cMax: 0.00 }, 
+                        { sMin: -13.00, sMax: -13.00, cMin: 0.00, cMax: 0.00 }, 
+                        { sMin: -13.50, sMax: -13.50, cMin: 0.00, cMax: 0.00 },
+                        { sMin: -14.00, sMax: -14.00, cMin: 0.00, cMax: 0.00 },  
+                        { sMin: -14.50, sMax: -14.50, cMin: 0.00, cMax: 0.00 }, 
+                        { sMin: -15.00, sMax: -15.00, cMin: 0.00, cMax: 0.00 }, 
+                    ]                    
+                }, 
+            }
+        }
+    }
     // 다른 회사 데이터
 };
 
@@ -152,7 +879,40 @@ document.getElementById('company').addEventListener('change', function () {
     }
 });
 
-// 설계 변경 시 코팅/색상 옵션 업데이트
+document.getElementById('refractiveIndex').addEventListener('change', function () {
+    const company = document.getElementById('company').value;
+    const refractiveIndex = this.value;
+
+    const productSelect = document.getElementById('product');
+    productSelect.innerHTML = '<option value="">설계 선택</option>';
+
+    if (company && refractiveIndex) {
+        let products = [...companyToProducts[company]];
+
+        // 회사별 가능한 굴절률과 색상 옵션 확인
+        const photochromicOptions = extraOptionData[company]?.photochromic || {};
+
+        if (photochromicOptions[refractiveIndex]) {
+            // 굴절률에서 '변색'이 가능한 경우 추가
+            if (!products.includes('변색')) {
+                products.push('변색');
+            }
+        } else {
+            // 굴절률에서 '변색'이 불가능한 경우 제외
+            products = products.filter(product => product !== 'photochromic');
+        }
+
+        // 드롭다운에 옵션 추가
+        products.forEach(product => {
+            const option = document.createElement('option');
+            option.value = product;
+            option.textContent = product;
+            productSelect.appendChild(option);
+        });
+    }
+});
+
+
 // 설계 변경 시 코팅/색상 옵션 업데이트
 document.getElementById('product').addEventListener('change', function () {
     const company = document.getElementById('company').value;
@@ -180,7 +940,11 @@ document.getElementById('product').addEventListener('change', function () {
         extraOptionData[company][product][refractiveIndex]
     ) {
         const options = extraOptionData[company][product][refractiveIndex];
-        options.forEach(option => {
+        const filteredOptions = (refractiveIndex === '1.67' || refractiveIndex === '1.74') 
+            ? options.filter(option => option.value !== 'photochromic') 
+            : options;
+
+        filteredOptions.forEach(option => {
             const optElement = document.createElement('option');
             optElement.value = option.value;
             optElement.textContent = option.label;

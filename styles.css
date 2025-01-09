@@ -6,7 +6,7 @@ body {
 }
 
 .container {
-    max-width: 600px;
+    max-width: 400px;
     margin: 50px auto;
     padding: 20px;
     background: #fff;
@@ -32,6 +32,11 @@ input, select, button {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
+}
+
+/* S값과 C값만 별도 스타일 적용 */
+.input-sc {
+    width: calc(100% - 20px); /* 양쪽에 여백을 주기 위해 너비 조정 */
 }
 
 button {
