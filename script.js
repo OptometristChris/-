@@ -160,9 +160,6 @@ const extraOptionData = {
             '1.60':[
                 {value: 'puv', label: 'P-UV 루티나'}
             ],
-            '1.67':[
-                {value: 'puv', label: 'P-UV 루티나'}
-            ],
             '1.76':[
                 {value: 'puv', label: 'P-UV 루티나'}
             ],
@@ -900,6 +897,18 @@ document.getElementById('refractiveIndex').addEventListener('change', function (
         } else {
             // 굴절률에서 '변색'이 불가능한 경우 제외
             products = products.filter(product => product !== 'photochromic');
+        }
+
+        const dasOptions = extraOptionData[company]?.das || {};
+
+        if (dasOptions[refractiveIndex]) {
+            // 굴절률에서 'das'이 가능한 경우 추가
+            if (!products.includes('양면비구면')) {
+                products.push('양면비구면');
+            }
+        } else {
+            // 굴절률에서 'das'이 불가능한 경우 제외
+            products = products.filter(product => product !== 'das');
         }
 
         // 드롭다운에 옵션 추가
