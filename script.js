@@ -656,7 +656,15 @@ const rangeData = {
                 puv: {
                     sRange: { min: -5.00, max: +4.00 },
                     cRules: [
-                        
+                        { sMin: -4.50, sMax: 0.00, cMin: -2.00, cMax: 0.00 },
+                        { sMin: -5.00, sMax: 0.00, cMin: 0.00, cMax: 0.00 },
+                        { sMin: 0.25, sMax: 0.25, cMin: -2.00, cMax: -0.50 },
+                        { sMin: 0.50, sMax: 0.50, cMin: -2.00, cMax: -0.75 },
+                        { sMin: 0.75, sMax: 0.75, cMin: -2.00, cMax: -1.00 },
+                        { sMin: 1.00, sMax: 1.00, cMin: -2.00, cMax: -1.25 },
+                        { sMin: 1.25, sMax: 1.25, cMin: -2.00, cMax: -1.50 },
+                        { sMin: 1.50, sMax: 1.50, cMin: -2.00, cMax: -1.75 },
+                        { sMin: 1.75, sMax: 1.75, cMin: -2.00, cMax: -2.00 },
                     ],
                 },
             },
