@@ -302,8 +302,9 @@ const rangeData = {
                 perfect: {
                     sRange: { min: -15.00, max: -1.00 },
                     cRules: [
-                        { sMin: -6.00, sMax: 0.00, cMin: -3.00, cMax: 0.00 },
-                        { sMin: 0.25, sMax: 4.00, cMin: -2.00, cMax: 0.00 },
+                        { sMin: -10.00, sMax: -1.00, cMin: -4.00, cMax: 0.00 },
+                        { sMin: -12.00, sMax: -10.25, cMin: -2.00, cMax: 0.00 },
+                        { sMin: -15.00, sMax: -12.25, cMin: 0.00, cMax: 0.00 },
                     ],
                 },
                 uv: {
