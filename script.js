@@ -65,9 +65,15 @@ const extraOptionData = {
     chemi: {
         photochromic:{
             '1.60':[
+                {value: '160pagr', label: '비구면 포토에이드 그레이'},
+                {value: '160pabr', label: '비구면 포토에이드 브라운'},
                 {value: 'gr', label: '구면 gen8 그레이'},
                 {value: 'br', label: '구면 gen8 브라운'},
                 {value: 'exgr', label: '구면 gen8 엑스트라그레이'},
+            ],
+            '1.67':[
+                {value: '167pagr', label: '비구면 포토에이드 그레이'},
+                {value: '167pabr', label: '비구면 포토에이드 브라운'},
             ]
         },
         asp: {
@@ -78,10 +84,12 @@ const extraOptionData = {
             '1.60': [
                 { value: 'perfect', label: '퍼펙트' },
                 { value: 'uv', label: '발수' },
+                { value: 'xdrive', label: 'X-drive' },
             ],
             '1.67': [
                 { value: 'perfect', label: '퍼펙트' },
                 { value: 'uv', label: '발수' },
+                { value: 'xdrive', label: 'X-drive' },
             ],
             '1.74': [
                 { value: 'perfect', label: '퍼펙트' },
@@ -236,7 +244,33 @@ const rangeData = {
                     cRules: [
                         { sMin: -6.00, sMax: 0.00, cMin: -2.00, cMax: 0.00 },
                     ]
-                }
+                },
+                '160pagr':{
+                    sRange:{min: -6.00, max: 0.00},
+                    cRules:[
+                        {sMin: -6.00, sMax: 0.00, cMin: -2.00, cMax: 0.00}
+                    ]
+                },
+                '160pabr':{
+                    sRange:{min: -6.00, max: 0.00},
+                    cRules:[
+                        {sMin: -6.00, sMax: 0.00, cMin: -2.00, cMax: 0.00}
+                    ]
+                },
+            },
+            '1.67':{
+                '167pagr':{
+                    sRange:{min: -8.00, max: 0.00},
+                    cRules:[
+                        {sMin: -8.00, sMax: 0.00, cMin: -2.00, cMax: 0.00}
+                    ]
+                },
+                '167pabr':{
+                    sRange:{min: -8.00, max: 0.00},
+                    cRules:[
+                        {sMin: -8.00, sMax: 0.00, cMin: -2.00, cMax: 0.00}
+                    ]
+                },
             }
         },
         asp: {
@@ -274,6 +308,13 @@ const rangeData = {
                         { sMin: -10.00, sMax: -8.25, cMin: -2.00, cMax: 0.00 },
                     ],
                 },
+                'xdrive':{
+                    sRange: { min: -6.00, max: 4.00 },
+                    cRules: [
+                        { sMin: -6.00, sMax: 0.00, cMin: -3.00, cMax: 0.00 },
+                        { sMin: 0.25, sMax: 4.00, cMin: -2.00, cMax: 0.00 },
+                    ],
+                }
             },
             '1.67': {
                 perfect: {
@@ -297,6 +338,12 @@ const rangeData = {
                         { sMin: -15.00, sMax: -15.00, cMin: -0.00, cMax: 0.00 },
                     ],
                 },
+                'xdrive':{
+                    sRange: { min: -10.00, max: -2.00 },
+                    cRules: [
+                        { sMin: -10.00, sMax: -2.00, cMin: -4.00, cMax: 0.00 },
+                    ],
+                }
             },
             '1.74': {
                 perfect: {
