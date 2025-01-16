@@ -33,11 +33,11 @@ const extraOptionData = {
     nikon: {
         photochromic:{
             '1.56':[
-                {value: 'gr', label: '구면 그레이'}
+                {value: 'gr', label: '구면 gen8 그레이'}
             ],
             '1.60':[
-                {value: 'gr', label: '비구면 그레이'},
-                {value: 'br', label: '비구면 브라운'}
+                {value: 'gr', label: '비구면 gen8 그레이'},
+                {value: 'br', label: '비구면 gen8 브라운'}
             ]
         },
         asp: {
@@ -65,9 +65,9 @@ const extraOptionData = {
     chemi: {
         photochromic:{
             '1.60':[
-                {value: 'gr', label: '구면 그레이'},
-                {value: 'br', label: '구면 브라운'},
-                {value: 'exgr', label: '구면 엑스트라그레이'},
+                {value: 'gr', label: '구면 gen8 그레이'},
+                {value: 'br', label: '구면 gen8 브라운'},
+                {value: 'exgr', label: '구면 gen8 엑스트라그레이'},
             ]
         },
         asp: {
@@ -835,8 +835,7 @@ const rangeData = {
                 uvtect:{
                     sRange: { min: -15.00, max: -3.00 },
                     cRules: [
-                        { sMin: -10.00, sMax: -3.00, cMin: -2.00, cMax: 0.00 },
-                        { sMin: -8.00, sMax: -4.00, cMin: -4.00, cMax: 0.00 },
+                        { sMin: -10.00, sMax: -3.00, cMin: -4.00, cMax: 0.00 },
                         { sMin: -10.50, sMax: -10.50, cMin: -2.00, cMax: 0.00 },
                         { sMin: -11.00, sMax: -11.00, cMin: -2.00, cMax: 0.00 },                       
                         { sMin: -11.50, sMax: -11.50, cMin: -2.00, cMax: 0.00 },                       
