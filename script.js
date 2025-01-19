@@ -150,6 +150,10 @@ const extraOptionData = {
                 {value: 'dp', label: 'DP'},
                 {value: 'bgdp', label: 'BGDP'},
             ],
+            '1.74':[
+                {value: 'dp', label: 'DP'},
+                {value: 'bgdp', label: 'BGDP'},
+            ],
         }
     },
     tokai:{
